@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const { createTutor } = require("../controllers/tutors");
+const { createTutor, updateTutor } = require("../controllers/tutors");
 
 // All tutor routes
 router.route("/").post(createTutor);
+router.route("/:id").put(updateTutor);
 
 module.exports = router;

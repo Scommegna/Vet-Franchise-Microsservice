@@ -1,4 +1,7 @@
+// Gets environment variables
 require("dotenv").config();
+
+// Helps with async errors
 require("express-async-errors");
 
 import { Request, Response } from "express";
@@ -7,8 +10,6 @@ import { connectDB } from "./db/connect";
 
 const tutorRouter = require("./routes/tutor");
 const tutorsRouter = require("./routes/tutors");
-
-// Gets environment variables
 
 const express = require("express");
 

@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 
 import { connectDB } from "./db/connect";
 
+const tutorRouter = require("./routes/tutors");
+
 // Gets environment variables
 require("dotenv").config();
 
@@ -14,6 +16,9 @@ app.use(express.json());
 app.get("/", (req: Request, res: Response) => {
   res.send("<h1>hello</h1>");
 });
+
+// Gets all "tutor" routes
+app.use("/tutor", tutorRouter);
 
 const port = process.env.PORT || 3000;
 

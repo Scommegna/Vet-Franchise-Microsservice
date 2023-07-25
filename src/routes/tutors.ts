@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
-const { createTutor } = require("../controllers/tutors");
+const { getTutors } = require("../controllers/tutors");
 
 // All tutor routes
-router.route("/").post(createTutor);
+router.route("/").get(getTutors);
 
 module.exports = router;

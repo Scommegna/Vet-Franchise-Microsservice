@@ -1,11 +1,14 @@
+require("dotenv").config();
+require("express-async-errors");
+
 import { Request, Response } from "express";
 
 import { connectDB } from "./db/connect";
 
-const tutorRouter = require("./routes/tutors");
+const tutorRouter = require("./routes/tutor");
+const tutorsRouter = require("./routes/tutors");
 
 // Gets environment variables
-require("dotenv").config();
 
 const express = require("express");
 
@@ -19,6 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // Gets all "tutor" routes
 app.use("/tutor", tutorRouter);
+app.use("/tutors", tutorsRouter);
 
 const port = process.env.PORT || 3000;
 

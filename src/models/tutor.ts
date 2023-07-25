@@ -26,3 +26,5 @@ export const tutorSchema = new mongoose.Schema({
   },
   pets: [petSchema],
 });
+
+module.exports = mongoose.model("Tutors", tutorSchema);

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Pet db schema
 export const petSchema = new mongoose.Schema({
   name: {
     type: String,

@@ -27,8 +27,18 @@ const updateTutor = async function (req: Request, res: Response) {
   res.status(200).json({ tutor });
 };
 
+// Deletes tutor
+const deleteTutor = async function (req: Request, res: Response) {
+  const { id: tutorId } = req.params;
+
+  const tutor = await Tutor.findByIdAndDelete({ _id: tutorId });
+
+  res.status(200).json({ tutor });
+};
+
 module.exports = {
   getTutors,
   createTutor,
   updateTutor,
+  deleteTutor,
 };

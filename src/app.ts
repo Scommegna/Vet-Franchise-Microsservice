@@ -10,6 +10,7 @@ import { connectDB } from "./db/connect";
 
 const tutorRouter = require("./routes/tutor");
 const tutorsRouter = require("./routes/tutors");
+const petsRouter = require("./routes/pets");
 
 const express = require("express");
 
@@ -24,6 +25,9 @@ app.get("/", (req: Request, res: Response) => {
 // Gets all "tutor" routes
 app.use("/tutor", tutorRouter);
 app.use("/tutors", tutorsRouter);
+
+// Gets all "pets" routes
+app.use("/pet", petsRouter);
 
 const port = process.env.PORT || 3000;
 

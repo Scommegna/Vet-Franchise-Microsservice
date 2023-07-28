@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-const Tutor = require("../models/tutor");
+import Tutor from "../models/tutor";
 
 // Gets all tutors data
 const getTutors = async function (req: Request, res: Response) {

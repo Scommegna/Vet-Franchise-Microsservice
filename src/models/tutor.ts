@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 import { petSchema } from "./pets";
 
 // Tutors schema for database
@@ -27,4 +26,4 @@ export const tutorSchema = new mongoose.Schema({
   pets: [petSchema],
 });
 
-module.exports = mongoose.model("Tutors", tutorSchema);
+export default mongoose.model("Tutors", tutorSchema);

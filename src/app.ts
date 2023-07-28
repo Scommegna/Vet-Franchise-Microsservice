@@ -1,26 +1,21 @@
 // Gets environment variables
 require("dotenv").config();
 
-// Helps with async errors
-require("express-async-errors");
-
-import { Request, Response } from "express";
-
 import { connectDB } from "./db/connect";
 
 const tutorRouter = require("./routes/tutor");
 const tutorsRouter = require("./routes/tutors");
 const petsRouter = require("./routes/pets");
 
+const errorHandlerMiddleware = require("./middlewares/errorHandlerMiddleware");
+
 const express = require("express");
 
 const app = express();
 
+// Middlewares
 app.use(express.json());
-
-app.get("/", (req: Request, res: Response) => {
-  res.send("<h1>hello</h1>");
-});
+app.use(errorHandlerMiddleware);
 
 // Gets all "tutor" routes
 app.use("/tutor", tutorRouter);

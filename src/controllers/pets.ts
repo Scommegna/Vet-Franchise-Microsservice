@@ -45,7 +45,7 @@ const updatesPetInfo = async function (req: Request, res: Response) {
     }
   );
 
-  const owner = await Tutor.findById(tutorId)!;
+  const owner = await Tutor.findById(tutorId);
 
   const allOwnersPets = await Pet.aggregate([
     {
@@ -65,10 +65,37 @@ const updatesPetInfo = async function (req: Request, res: Response) {
   return res.status(200).json(petToBeUpdated);
 };
 
+// Deletes pet of tutor by id
+const deletePet = async function (req: Request, res: Response) {
+  const { petId, tutorId } = req.params;
+
+  const petToBeDeleted = await Pet.findOneAndDelete({
+    _id: petId,
+    owner: tutorId,
+  });
+
+  const owner = await Tutor.findById(tutorId);
+
+  const allOwnersPets = await Pet.aggregate([
+    {
+      $match: {
+        owner: new ObjectId(tutorId),
+      },
+    },
+  ]);
+
+  owner.pets = allOwnersPets;
+
+  const tutorToUpdate = await Tutor.findByIdAndUpdate({ _id: tutorId }, owner, {
+    new: true,
+    runValidators: true,
+  });
+
+  return res.status(200).json(petToBeDeleted);
+};
+
 module.exports = {
   createPet,
   updatesPetInfo,
+  deletePet,
 };
-
-// Soluções: procurar no array e dar update ou so salvar pelo id do pet
-// Deleta array, procura todos, salva todos no array

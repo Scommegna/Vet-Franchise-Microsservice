@@ -38,7 +38,7 @@ const createTutor = async function (
       throw new CustomAPIError("Could not create user!", 400);
     }
 
-    res.status(201).json({ newTutor });
+    res.status(201).json({ body });
   } catch (error) {
     next(error);
   }

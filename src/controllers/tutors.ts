@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 
-import { createCustomError } from "../errors/custom-error";
+import { CustomAPIError } from "../errors/custom-error";
 
 import Tutor from "../models/tutor";
 
@@ -12,6 +12,11 @@ const getTutors = async function (
 ) {
   try {
     const tutors = await Tutor.find({});
+
+    if (!tutors) {
+      throw new CustomAPIError("Tutors not found", 404);
+    }
+
     res.status(200).json({ tutors });
   } catch (error) {
     next(error);
@@ -30,7 +35,7 @@ const createTutor = async function (
     const newTutor = Tutor.create(body);
 
     if (!newTutor) {
-      return next(createCustomError("Tutor not found!", 404));
+      throw new CustomAPIError("Could not create user!", 400);
     }
 
     res.status(201).json({ newTutor });
@@ -55,7 +60,7 @@ const updateTutor = async function (
     });
 
     if (!tutor) {
-      return next(createCustomError("Tutor not found!", 404));
+      throw new CustomAPIError("Tutor not found!", 404);
     }
 
     res.status(200).json({ tutor });
@@ -76,7 +81,7 @@ const deleteTutor = async function (
     const tutor = await Tutor.findByIdAndDelete({ _id: tutorId });
 
     if (!tutor) {
-      return next(createCustomError("Tutor not found!", 404));
+      throw new CustomAPIError("Tutor not found!", 404);
     }
 
     res.status(200).json({ tutor });

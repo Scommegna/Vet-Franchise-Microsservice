@@ -12,9 +12,7 @@ const errorHandlerMiddleware = (
     return res.status(err.statusCode).json({ msg: err.message });
   }
 
-  return res
-    .status(500)
-    .json({ msg: "Something went wrong, please try again later." });
+  return res.status(500).json({ msg: "Something went wrong." });
 };
 
 module.exports = errorHandlerMiddleware;

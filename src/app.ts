@@ -6,6 +6,7 @@ import { connectDB } from "./db/connect";
 const tutorRouter = require("./routes/tutor");
 const tutorsRouter = require("./routes/tutors");
 const petsRouter = require("./routes/pets");
+const notFoundRoute = require("./middlewares/notFoundMiddleware");
 
 const errorHandlerMiddleware = require("./middlewares/errorHandlerMiddleware");
 
@@ -15,7 +16,6 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use(errorHandlerMiddleware);
 
 // Gets all "tutor" routes
 app.use("/tutor", tutorRouter);
@@ -23,6 +23,12 @@ app.use("/tutors", tutorsRouter);
 
 // Gets all "pets" routes
 app.use("/pet", petsRouter);
+
+// Middleware for when user tries to access route that does not exists
+app.use(notFoundRoute);
+
+// Error handling middleware
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 

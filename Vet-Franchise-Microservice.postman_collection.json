@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5cd916ac-7339-40f6-a104-62ec02f4b37e",
+		"_postman_id": "475ed9cc-15f2-4e3d-b06e-9e275fe13e2d",
 		"name": "Vet-Franchise-Microservice",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28636390"
@@ -64,13 +64,19 @@
 					}
 				},
 				"url": {
-					"raw": "{{MAIN-URL}}/tutor/64c57521a74e1769b06420f6",
+					"raw": "{{MAIN-URL}}/tutor/:tutorId",
 					"host": [
 						"{{MAIN-URL}}"
 					],
 					"path": [
 						"tutor",
-						"64c57521a74e1769b06420f6"
+						":tutorId"
+					],
+					"variable": [
+						{
+							"key": "tutorId",
+							"value": null
+						}
 					]
 				}
 			},
@@ -82,13 +88,19 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{MAIN-URL}}/tutor/64c575573f1fd604f511a036",
+					"raw": "{{MAIN-URL}}/tutor/:tutorId",
 					"host": [
 						"{{MAIN-URL}}"
 					],
 					"path": [
 						"tutor",
-						"64c575573f1fd604f511a036"
+						":tutorId"
+					],
+					"variable": [
+						{
+							"key": "tutorId",
+							"value": null
+						}
 					]
 				}
 			},
@@ -109,13 +121,13 @@
 					}
 				},
 				"url": {
-					"raw": "{{MAIN-URL}}/pet/64c57521a74e1769b06420f6",
+					"raw": "{{MAIN-URL}}/pet/tutorId",
 					"host": [
 						"{{MAIN-URL}}"
 					],
 					"path": [
 						"pet",
-						"64c57521a74e1769b06420f6"
+						"tutorId"
 					]
 				}
 			},
@@ -136,15 +148,15 @@
 					}
 				},
 				"url": {
-					"raw": "{{MAIN-URL}}/pet/64c3f99be1e7ad43d5a033d9/tutor/64c3ebe072e90fb30ac0365f",
+					"raw": "{{MAIN-URL}}/pet/petId/tutor/tutorId",
 					"host": [
 						"{{MAIN-URL}}"
 					],
 					"path": [
 						"pet",
-						"64c3f99be1e7ad43d5a033d9",
+						"petId",
 						"tutor",
-						"64c3ebe072e90fb30ac0365f"
+						"tutorId"
 					]
 				}
 			},
@@ -156,15 +168,15 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{MAIN-URL}}/pet/64c3f99be1e7ad43d5a033d9/tutor/64c3ebe072e90fb30ac0365f",
+					"raw": "{{MAIN-URL}}/pet/petId/tutor/tutorId",
 					"host": [
 						"{{MAIN-URL}}"
 					],
 					"path": [
 						"pet",
-						"64c3f99be1e7ad43d5a033d9",
+						"petId",
 						"tutor",
-						"64c3ebe072e90fb30ac0365f"
+						"tutorId"
 					]
 				}
 			},

@@ -2,6 +2,10 @@
 
 Essa aplicação consiste em um microserviço de back-end para a administração de dados de uma franquia de clínicas veterinárias. A partir dessa aplicação, é feito o controle do cadastro de donos de animais e de seus respectivos animais.
 
+## Autor
+
+- **Lucas Scommegna** - [lucas.scommegna.pb@compasso.com.br](lucas.scommegna.pb@compasso.com.br)
+
 ## Iniciando a aplicação
 
 Primeiramente, clone o repositório atual na sua máquina, pelo terminal a partir do seguinte comando:
@@ -101,7 +105,3 @@ A requisição para essa rota deletará todos os dados de um determinado pet de 
 - [Mongoose](https://mongoosejs.com/) - Modelador de objetos de MongoDB para NodeJS
 - [TS-Node-Dev](https://www.npmjs.com/package/ts-node-dev) - Compilador de TypeScript para aplicações NodeJs
 - [dotenv](https://www.npmjs.com/package/dotenv) - Biblioteca de gerenciamento de variáveis ambiente.
-
-## Authors
-
-- **Lucas Scommegna** - [GitHub](https://github.com/Scommegna)

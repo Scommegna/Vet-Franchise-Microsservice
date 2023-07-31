@@ -11,7 +11,7 @@ Essa aplicação consiste em um microserviço de back-end para a administração
 Primeiramente, clone o repositório atual na sua máquina, pelo terminal a partir do seguinte comando:
 
 ```
-Git clone <link HTTPS ou SSH> .
+git clone <link HTTPS ou SSH> .
 ```
 
 Após, utilize o seguinte comando no terminal, estando localizado na pasta da aplicação:

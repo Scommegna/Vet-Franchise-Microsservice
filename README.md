@@ -21,10 +21,10 @@ Na seção "Database" da sua conta MongoDB, escolha uma data base, clique em con
 Crie na pasta raiz da aplicação um arquivo ".env" e crie um valor "MONGO_URI" e iguale a connection string gerada, lembrando de completar os parametros dela. A connection string tem o seguinte formato:
 
 ```
-mongodb+srv://lucas:<password>@nodeexpressprojects.k3spluk.mongodb.net/<database-name>?retryWrites=true&w=majority
+mongodb+srv://<nome-do-usuario>:<password>@nodeexpressprojects.k3spluk.mongodb.net/<database-name>?retryWrites=true&w=majority
 ```
 
-Sendo o campo "password" a senha da sua database e o "database-name" o nome da database a ser criada.
+Sendo os campos "password" a senha da sua database, "database-name" o nome da database a ser criada e o campo "nome-do-usuario" o seu nome de usuário no MongoDB, sendo esse campo gerado automaticamente.
 
 Após essas configurações da aplicação e do MongoDB, está na hora de configurar o Postman.
 
@@ -37,82 +37,71 @@ Dessa forma, a aplicação está praticamente configurada. Após tudo isso, digi
 npm start
 ```
 
-### Prerequisites
+## Utilizando a aplicação
 
-What things you need to install the software and how to install them
+Após as instalações anteriores terem sido feitas, e a aplicação estar rodando após o comando "npm start", todas as requisições para as rotas serão feitas através do Postman, e serão explicadas a seguir.
 
-```
-Give examples
-```
+### Rota GET/tutors
 
-### Installing
+A requisição para essa rota retornará um body JSON com as informações de todos os donos de pets cadastrados no banco de dados.
 
-A step by step series of examples that tell you how to get a development env running
+### Rota POST/tutor
 
-Say what the step will be
+A requisição para essa rota deve ser feita enviando um body, em formato JSON, com os seguintes campos, com os seguintes tipos:
 
 ```
-Give the example
+{
+    "name": string,
+    "phone": string,
+    "email": string,
+    "date_of_birth": Date,
+    "zip_code": string
+}
 ```
 
-And repeat
+Após o sucesso da requisição, também será gerado um campo "\_id" com um valor identificador único para o dono e um vetor para armazenamento dos seus pets.
+
+### Rota PUT/tutor/:id
+
+A requisição para essa rota atualizará os dados de um dono, cujo valor de "id" deve ser passado nos parâmetros de rota. Além disso, deve ser enviado um body, em formato JSON, com os campos que devem ser atualizados do dono, sendo possíveis campos de atualização os mesmos da rota "POST/tutor".
+
+### Rota DELETE/tutor/:id
+
+A requisição para essa rota deletará todas as informações de um dono, cujo valor de "id" deve ser passado nos parâmetros de rota.
+
+### Rota POST/pet/:tutorId
+
+A requisição para essa rota criará e armazenará no banco de dados os dados de um pet cujo relacionamento será feito pelo "id" do dono que deve ser passado nos parâmetros de rota. Além disso, deve ser enviado um body, em formato JSON, com os seguintes campos, com os seguintes tipos:
 
 ```
-until finished
+{
+    "name": string,
+    "species": string,
+    "carry": string,
+    "weight": number,
+    "date_of_birth": Date
+}
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Após a requisição ser feita com sucesso, os dados do pet cadastrado serão salvos em uma tabela do banco de dados e serão gerados também dois novos campos para o pet: um campo "\_id", com um valor identificador único para o pet e um campo "owner", que contém o valor de "\_id" do dono do pet, sendo esse campo utilizado para o relacionamento de dados. Além disso, os dados do pet cadastrado serão salvos no vetor "pets" do dono.
 
-## Running the tests
+### Rota PUT/pet/:petId/tutor/:tutorId
 
-Explain how to run the automated tests for this system
+A requisição para essa rota atualizará os dados de um pet de um determinado dono (cujos valores de "id" devem ser especificados nos parâmetros de rota), sendo esses dados atualizados na tabela de pets e no vetor de pets do dono. Para que a atualização seja feita, deve ser enviado um body, em formato JSON, contendo os campos do pet a serem atualizados, sendo que esse campos devem seguir o formato especificado na rota "POST/pet/:tutorId".
 
-### Break down into end to end tests
+### Rota DELETE/pet/:petId/tutor/:tutorId
 
-Explain what these tests test and why
+A requisição para essa rota deletará todos os dados de um determinado pet de um determinado dono (cujos valores de "id" devem ser especificados nos parâmetros de rota) do banco de dados e do vetor de pets do dono.
 
-```
-Give an example
-```
+## Tecnologias utilizadas
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency Management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+- [Express](https://expressjs.com/pt-br/) - Framework Back-End.
+- [TypeScript](https://www.typescriptlang.org/) - Superset, para tipagem de JavaScript.
+- [MongoDB](https://www.mongodb.com/pt-br) - Banco de dados não-relacional.
+- [Mongoose](https://mongoosejs.com/) - Modelador de objetos de MongoDB para NodeJS
+- [TS-Node-Dev](https://www.npmjs.com/package/ts-node-dev) - Compilador de TypeScript para aplicações NodeJs
+- [dotenv](https://www.npmjs.com/package/dotenv) - Biblioteca de gerenciamento de variáveis ambiente.
 
 ## Authors
 
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- **Lucas Scommegna** - [GitHub](https://github.com/Scommegna)

@@ -34,12 +34,12 @@ Após isso, todas as rotas do Postman já estarão configuradas para serem testa
 Dessa forma, a aplicação está praticamente configurada. Após tudo isso, digite no terminal o seguinte comando para iniciar a aplicação:
 
 ```
-npm start
+npm run dev
 ```
 
 ## Utilizando a aplicação
 
-Após as instalações anteriores terem sido feitas, e a aplicação estar rodando após o comando "npm start", todas as requisições para as rotas serão feitas através do Postman, e serão explicadas a seguir.
+Após as instalações anteriores terem sido feitas, e a aplicação estar rodando após o comando "npm run dev", todas as requisições para as rotas serão feitas através do Postman, e serão explicadas a seguir.
 
 ### Rota GET/tutors
 

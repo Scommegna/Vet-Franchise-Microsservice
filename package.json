@@ -2,9 +2,10 @@
   "name": "challenge-01-vet-clinic",
   "version": "1.0.0",
   "description": "This project is a microservice for a veterinary franchise. It will be used by all clinics franchise for internal client and attendances management.",
-  "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/app.ts"
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/app.ts",
+    "build": "tsc --outDir build",
+    "start": "node build/app.js"
   },
   "author": "Lucas Scommegna",
   "license": "ISC",

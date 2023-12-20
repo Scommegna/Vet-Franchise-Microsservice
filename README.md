@@ -4,7 +4,7 @@ Essa aplicação consiste em um microserviço de back-end para a administração
 
 ## Autor
 
-- **Lucas Scommegna** - [lucas.scommegna.pb@compasso.com.br](lucas.scommegna.pb@compasso.com.br)
+- **Lucas Scommegna** - [scommegnal@hotmail.com](scommegnal@hotmail.com)
 
 ## Iniciando a aplicação
 
